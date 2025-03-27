@@ -106,7 +106,34 @@
  
  <tbody><tr>
  <td style="text-align:left;font-size:15px;font-weight:600;padding:10px 20px 0 5px;color:#016DDC">LICENSEE DETAILS</td>
- <td style="text-align:right;font-size:12px;padding:10px 0 0 0"><font face="arial, helvetica, verdana, sans-serif"><em>1:05:06 PM&nbsp;3/8/2025</em></font></td>
+ <td style="text-align:right;font-size:12px;padding:10px 0 0 0"><font face="arial, helvetica, verdana, sans-serif">
+ <em id="datetime"></em>
+
+<script>
+    window.onload = function() {
+        const now = new Date();
+        
+        // Format time
+        let hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12; // Convert to 12-hour format
+        
+        // Format date
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const year = now.getFullYear();
+        
+        // Create formatted date string
+        const formattedDateTime = `${hours}:${minutes}:${seconds} ${ampm}&nbsp;${month}/${day}/${year}`;
+        
+        // Insert into HTML
+        document.getElementById("datetime").innerHTML = formattedDateTime;
+    };
+</script>
+
+ </font></td>
  </tr>
  </table>
  
